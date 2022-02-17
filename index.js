@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { readFile } = require('fs/promises');
-// const randToken = require('rand-token');
-const { handleError } = require('./middlewares');
+const randToken = require('rand-token');
+const { validateLogin, handleError } = require('./middlewares');
 
 const TALKER_LIST = './talker.json';
 
@@ -39,6 +39,15 @@ app.get('/talker/:id', async (req, res, next) => {
     }
 
     return res.status(HTTP_OK_STATUS).json(talkerFound);
+  } catch (error) {
+    return next(error);
+  }
+});
+
+app.post('/login', validateLogin, (_req, res, next) => {
+  try {
+    const token = randToken.generate(16);
+    return res.status(HTTP_OK_STATUS).json({ token });
   } catch (error) {
     return next(error);
   }
