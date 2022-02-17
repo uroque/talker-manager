@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { readFile } = require('fs/promises');
-const randToken = require('rand-token');
-const { validateLogin, handleError } = require('./middlewares');
+// const randToken = require('rand-token');
+const { handleError } = require('./middlewares');
 
 const TALKER_LIST = './talker.json';
 

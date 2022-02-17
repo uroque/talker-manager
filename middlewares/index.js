@@ -4,7 +4,7 @@ const validatePassword = require('./validatePassword');
 
 const validateLogin = [validateEmail, validatePassword];
 
-module.exports({
+module.exports = ({
   validateLogin,
   handleError,
 });
