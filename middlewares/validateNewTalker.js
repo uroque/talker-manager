@@ -61,7 +61,7 @@ const validateWatchedAt = (req, res, next) => {
 
     // https://stackoverflow.com/questions/5465375/javascript-date-regex-dd-mm-yyyy
 
-    const DATE_REGEX = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+    const DATE_REGEX = /^(0?[1-9]|[12][0-9]|3[01])[/-](0?[1-9]|1[012])[\\/\\-]\d{4}$/;
 
     if (!DATE_REGEX.test(talk.watchedAt || talk.watchedAt === '')) {
       return res.status(400)
