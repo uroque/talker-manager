@@ -2,7 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { readFile } = require('fs/promises');
 const randToken = require('rand-token');
-const { validateLogin, handleError } = require('./middlewares');
+const {
+  validateLogin,
+  validateToken,
+  validateNewTalker,
+  handleError,
+  postNewTalker,
+} = require('./middlewares');
 
 const TALKER_LIST = './talker.json';
 
@@ -44,6 +50,8 @@ app.get('/talker/:id', async (req, res, next) => {
   }
 });
 
+app.post('/talker', validateToken, validateNewTalker, postNewTalker);
+
 app.post('/login', validateLogin, (_req, res, next) => {
   try {
     const token = randToken.generate(16);
@@ -52,14 +60,6 @@ app.post('/login', validateLogin, (_req, res, next) => {
     return next(error);
   }
 });
-
-// app.post('/talker', (req, res, next) => {
-//   try {
-    
-//   } catch (error) {
-    
-//   }
-// });
 
 app.use(handleError);
 
