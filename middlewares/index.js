@@ -1,4 +1,5 @@
 const handleError = require('./handleError');
+
 const validateEmail = require('./validateEmail');
 const validatePassword = require('./validatePassword');
 
@@ -12,6 +13,7 @@ const {
 } = require('./validateNewTalker');
 
 const postNewTalker = require('./postNewTalker');
+const putTalker = require('./putTalker');
 
 const validateNewTalker = [
   validateAge,
@@ -29,4 +31,5 @@ module.exports = ({
   validateToken,
   validateNewTalker,
   postNewTalker,
+  putTalker,
 });
