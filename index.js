@@ -9,6 +9,7 @@ const {
   handleError,
   postNewTalker,
   putTalker,
+  deleteTalker,
 } = require('./middlewares');
 
 const TALKER_LIST = './talker.json';
@@ -54,6 +55,8 @@ app.get('/talker/:id', async (req, res, next) => {
 app.post('/talker', validateToken, validateNewTalker, postNewTalker);
 
 app.put('/talker/:id', validateToken, validateNewTalker, putTalker);
+
+app.delete('/talker/:id', validateToken, deleteTalker);
 
 app.post('/login', validateLogin, (_req, res, next) => {
   try {
