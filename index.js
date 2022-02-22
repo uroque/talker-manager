@@ -10,6 +10,7 @@ const {
   postNewTalker,
   putTalker,
   deleteTalker,
+  searchTalker,
 } = require('./middlewares');
 
 const TALKER_LIST = './talker.json';
@@ -33,6 +34,8 @@ app.get('/talker', async (_req, res, next) => {
     return next(error);
   }
 });
+
+app.get('/talker/search', validateToken, searchTalker);
 
 app.get('/talker/:id', async (req, res, next) => {
   try {

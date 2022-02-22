@@ -15,6 +15,7 @@ const {
 const postNewTalker = require('./postNewTalker');
 const putTalker = require('./putTalker');
 const deleteTalker = require('./deleteTalker');
+const searchTalker = require('./searchTalker');
 
 const validateNewTalker = [
   validateAge,
@@ -34,4 +35,5 @@ module.exports = ({
   postNewTalker,
   putTalker,
   deleteTalker,
+  searchTalker,
 });
